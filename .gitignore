@@ -10,7 +10,14 @@
 *.dylib
 *.test
 *.out
+coverage.*
+*.coverprofile
+profile.cov
 vendor/
+
+# Go workspace
+go.work
+go.work.sum
 
 # Env
 .env
