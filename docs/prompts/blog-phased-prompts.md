@@ -8,17 +8,21 @@
 ## 第一阶段：地基
 
 ```
-帮我搭建一个 Go/Gin 博客系统（项目名 ginblog），技术栈：Go + Gin + GORM + MySQL + JWT。
+帮我搭建一个 Go/Gin 博客系统（项目名 ginblog），技术栈：技术栈：Go1.18.9、Gin、GORM、Redis3、MySQL5.7、Nginx、Vue2、element-ui
 
 第一阶段只做地基，不涉及文章/分类/标签等业务模块：
 
 1. 项目骨架：标准目录结构（api/ model/ middleware/ routes/ config/ utils/）、go.mod 初始化
-2. 配置加载：viper 读取 config.yaml，支持数据库连接串、JWT 密钥、端口等配置项
-3. 数据库：GORM 初始化 MySQL 连接，自动建表，字符集 utf8mb4
+2. 配置加载：viper 读取 config.yaml、.env，支持数据库连接串、JWT 密钥、端口等配置项
+3. 数据库：GORM 初始化 MySQL 连接，字符集 utf8mb4。但是数据库迁移不用 GORM，需要用 golang-migrate/migrate
 4. 用户模块：用户模型（ID/用户名/密码/角色/创建时间）、注册接口、登录接口（返回 JWT）
 5. 角色中间件：管理员/普通用户区分，路由级别权限控制
 6. 公共中间件：跨域（CORS）、请求日志、异常恢复（Recovery）
 7. 统一响应封装：成功/失败 JSON 格式统一，错误返回中文提示，不暴露原始 DB 错误
+8. 时区：Asia/Shanghai（UTC+8）
+9. 环境变量区分：开发环境(dev) / 正式环境(prod)
+10. 全局异常：业务异常返回业务码 + 友好提示；系统 / 数据库底层异常 dev 返回堆栈 SQL，prod 对外隐藏底层信息，内部完整日志
+11. 日志用 zap 库，不要用 gin 自带
 
 约束：
 - SQL 用参数绑定，禁止拼接
