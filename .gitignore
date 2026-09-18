@@ -1,0 +1,24 @@
+# IDE
+.idea/
+.vscode/
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+vendor/
+
+# Env
+.env
+config.yaml
+
+# Uploads
+static/uploads/
+
+# OS
+.DS_Store
+Thumbs.db
